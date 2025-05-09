@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal PopUp</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+        *{
+            font-family: "Roboto", sans-serif;
+        }
+
+        #btnOpen{
+            margin: 10px 0px;
+            width: 130px;
+            height: 45px;
+            font-size: 16px;
+        }
+
+        #modal{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modalContent{
+            background-color: white;
+            width: 350px; 
+            height: 200px; 
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #btnClose{
+            border: none;
+            width: 70px;
+            height: 30px;
+            background-color: rgb(255, 52, 52);
+            color: white;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h2>📦 Modal Popup  Project</h2>
+    <button id="btnOpen">Open Modal</button>
+
+    <div id="modal">
+        <div class="modalContent">
+            <h3>This is a Modal</h3>
+            <p>Click close to hide this popup</p>
+            <button id="btnClose">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const btnClose = document.getElementById("btnClose")
+        const btnOpen = document.getElementById("btnOpen")
+        const Modal = document.getElementById("modal")
+
+        btnOpen.addEventListener("click", () => {
+            Modal.style.display = "flex"
+        })
+
+        btnClose.addEventListener("click", () => {
+            Modal.style.display = "none"
+        })
+
+        window.addEventListener("click", (event) => {
+            if (event.target === Modal) {
+                Modal.style.display = "none"
+            }
+        })
+    </script>
+</body>
+</html>
