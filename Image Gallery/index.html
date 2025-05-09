@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        #images {
+            display: flex;
+            gap: 8px;
+        }
+
+        #images img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+        }
+
+        .Preview {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .Preview img {
+            width: 280px;
+            height: 280px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Image Gallery</h2>
+    <div id="images">
+        <img src="Image1.jpeg" alt="Image1">
+        <img src="Image2.jpeg" alt="Image2">
+        <img src="Image3.jpeg" alt="Image3">
+    </div>
+
+    <div class="Preview">
+        <h3>Preview</h3>
+        <img class="PreviewImage" src="" alt="PreviewImage">
+    </div>
+
+    <script>
+        const Images = document.getElementById("images")
+        const PreviewImage = document.querySelector(".PreviewImage")
+        const Preview = document.querySelector(".Preview")
+
+        Images.addEventListener("click", (event) => {
+            if (event.target.tagName === "IMG") {
+                let Link = event.target.getAttribute("src")
+                PreviewImage.setAttribute("src", Link)
+                Preview.style.display = "flex"
+            }
+        })
+    </script>
+</body>
+
+</html>
