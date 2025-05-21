@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body{
+            font-family: "Roboto", sans-serif;
+        }
+
+        #Total{
+            border: none;
+            margin: 15px;
+            padding: 10px 15px;
+        }
+
+        li{
+            margin: 7px 20px;
+        }
+
+        #totalAmount{
+            margin: 7px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>🛍️ Shopping Cart</h2>
+    <div id="itemlist" style="list-style-type: none;"></div>
+    <button id="Total">Calculate Total</button>
+    <div id="totalAmount"></div>
+
+    <script>
+        const cart = [
+            {name: "Laptop", price: 800},
+            {name: "Mouse", price: 20},
+            {name: "Keyboard", price: 50},
+            {name: "Monitor", price: 200}
+        ]
+
+        const Button = document.getElementById("Total")
+        const TotalAmount = document.getElementById("totalAmount")
+        const List = document.getElementById("itemlist")
+
+        cart.forEach(element => {
+            let li = document.createElement('li')
+            li.textContent = `${element.name} - $${element.price}`
+            List.appendChild(li)
+        });
+
+        Button.addEventListener("click", () => {
+            let Total = cart.reduce((initialValue, element) => initialValue + element.price, 0)
+
+            TotalAmount.innerText = `Total Price: $${Total}`
+        })
+    </script>
+</body>
+
+</html>
