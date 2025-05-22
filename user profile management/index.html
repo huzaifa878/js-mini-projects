@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: auto;
+            max-width: 600px;
+
+        }
+
+        #profile {
+            list-style-type: none;
+            background: #f0f0f0;
+            border-radius: 8px;
+            margin: 8px;
+            padding: 10px;
+        }
+
+        li {
+            margin: 15px 0px;
+        }
+
+        #editProfile {
+            border: none;
+            margin: 25px 0px;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 10px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        #editProfile:hover {
+            background-color: #0056b3;
+        }
+
+        h3 {
+            margin: 30px 0px;
+        }
+
+        #Input {
+            display: flex;
+            flex-direction: column;
+            gap: 8px 0px;
+            margin: 15px 8px;
+        }
+
+        input,
+        #updateProfile {
+            padding: 13px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>👤 User Profile Management</h2>
+
+    <div id="profile">
+        <h3>Current Profile</h3>
+        <li><b>Name:</b><span id="displayName"></span></li>
+        <li><b>Email:</b> <span id="displayEmail"></span></li>
+        <li><b>Age:</b> <span id="displayAge"></span></li>
+        <button id="editProfile">✏️ Edit Profile</button>
+    </div>
+
+    <form id="Input">
+        <input type="text" id="name" placeholder="Enter name" required>
+        <input type="text" id="email" placeholder="Enter email" required>
+        <input type="number" id="age" placeholder="Enter age" required>
+        <button id="updateProfile">Update Profile</button>
+    </form>
+
+    <script>
+        const editButton = document.getElementById("editProfile")
+        const updateButton = document.getElementById("updateProfile")
+        const name = document.getElementById("name")
+        const email = document.getElementById("email")
+        const age = document.getElementById("age")
+
+        const displayName = document.getElementById("displayName")
+        const displayEmail = document.getElementById("displayEmail")
+        const displayAge = document.getElementById("displayAge")
+
+        const user = {
+            name: "Huzaifa",
+            email: "huzaifa@example.com",
+            age: 21
+        }
+
+        displayName.innerText = user.name
+        displayEmail.innerText = user.email
+        displayAge.innerText = user.age
+
+        updateButton.addEventListener("click", (e) => {
+            e.preventDefault()
+            let Name = name.value
+            let Email = email.value
+            let Age = age.value
+
+            displayName.innerText = Name
+            displayEmail.innerText = Email
+            displayAge.innerText = Age
+        })
+
+        editButton.addEventListener("click", () => {
+            name.value = displayName.innerText
+            email.value = displayEmail.innerText
+            age.value = displayAge.innerText
+        })
+    </script>
+</body>
+
+</html>
